@@ -17,7 +17,7 @@ export default class Mehrmaid extends Plugin {
 	async onload() {
 		await this.loadSettings();
 
-		this.addSettingTab(new MehrmaidSettingsTab(this.app, this));
+		//this.addSettingTab(new MehrmaidSettingsTab(this.app, this));
 
 		this.registerMarkdownCodeBlockProcessor('mehrmaid', async (source, el, ctx) => {
 			try {
