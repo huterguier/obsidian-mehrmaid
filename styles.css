@@ -6,3 +6,13 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
+
+.block-language-mehrmaid p:first-child {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.block-language-mehrmaid p:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}

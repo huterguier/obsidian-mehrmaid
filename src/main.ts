@@ -1,4 +1,5 @@
-import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { App, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { renderMehrmaid } from './mermaid';
 
 // Remember to rename these classes and interfaces!
 
@@ -16,7 +17,16 @@ export default class Mehrmaid extends Plugin {
 	async onload() {
 		await this.loadSettings();
 
-		this.addSettingTab(new SampleSettingTab(this.app, this));
+		this.addSettingTab(new MehrmaidSettingsTab(this.app, this));
+
+		this.registerMarkdownCodeBlockProcessor('mehrmaid', async (source, el, ctx) => {
+			try {
+				await renderMehrmaid(source, el, ctx);
+			} catch(e) {
+				console.error(e);
+				new Notice('Mehrmaid: Error rendering mermaid diagram');
+			}
+		});
 	}
 
 	onunload() {
@@ -32,7 +42,7 @@ export default class Mehrmaid extends Plugin {
 	}
 }
 
-class SampleModal extends Modal {
+class MehrmaidModal extends Modal {
 	constructor(app: App) {
 		super(app);
 	}
@@ -48,7 +58,7 @@ class SampleModal extends Modal {
 	}
 }
 
-class SampleSettingTab extends PluginSettingTab {
+class MehrmaidSettingsTab extends PluginSettingTab {
 	plugin: Mehrmaid;
 
 	constructor(app: App, plugin: Mehrmaid) {
