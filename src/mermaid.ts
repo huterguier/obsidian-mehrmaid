@@ -1,6 +1,6 @@
 import { MarkdownRenderChild, MarkdownRenderer, Plugin, MarkdownPostProcessorContext } from 'obsidian';
 import mermaid from 'mermaid';
-import { randomBytes, randomInt } from 'crypto';
+import { randomBytes } from 'crypto';
 import { THEME_DARK, THEME_LIGHT } from './themes';
 
 
@@ -64,7 +64,8 @@ export async function renderMehrmaid(source: string, el: HTMLElement, ctx: Markd
 
 
             let id = match.replace(/[^a-zA-Z0-9]/g, "") + i;
-            source = source.replace(match, `<div class="${graph_id}${id} cm-sizer" style="width: ${width}px; height: ${height-7}px; display: inline-block;"></div>`);
+            source = source.replace(match, 
+                                    `<div class="${graph_id}${id} cm-sizer" style="width: ${width}px; height: ${height-7}px; display: inline-block;"></div>`);
         }
 
         
