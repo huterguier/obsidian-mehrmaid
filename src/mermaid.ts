@@ -4,7 +4,7 @@ import { randomBytes } from 'crypto';
 import { THEME_DARK, THEME_LIGHT } from './themes';
 
 
-function renderMarkdown(str: string, el: HTMLElement, ctx: MarkdownPostProcessorContext, app: any) {
+async function renderMarkdown(str: string, el: HTMLElement, ctx: MarkdownPostProcessorContext, app: any) {
     const markdownRenderChild = new MarkdownRenderChild(el);
     const markdownEl = el.createDiv();
     markdownEl.style.display = "inline-block";
@@ -12,7 +12,7 @@ function renderMarkdown(str: string, el: HTMLElement, ctx: MarkdownPostProcessor
     if (ctx && !(typeof ctx == "string")) {
         ctx.addChild(markdownRenderChild);
     }
-    MarkdownRenderer.render(app, str, markdownEl, ctx.sourcePath, markdownRenderChild);
+    await MarkdownRenderer.render(app, str, markdownEl, ctx.sourcePath, markdownRenderChild);
     return markdownEl;
 }
 
@@ -37,12 +37,18 @@ export async function renderMehrmaid(source: string, el: HTMLElement, ctx: Markd
     let matches = source.match(/"([^"]*?)"/g);
 
     if (matches) {
-        let markdownEls = matches.map((match) => {
+        // turn the above into a for loop
+        let markdownEls = [];
+        for(let match of matches){
+            console.log(match);
+            console.log("dgsagkljds")
             match = match.substring(1, match.length - 1);
-            let markdownEl = renderMarkdown(match, el, ctx, this.app);
-            return markdownEl;
-        });
-        await new Promise(r => setTimeout(r, 100));
+            let markdownEl = await renderMarkdown(match, el, ctx, this.app);
+            markdownEls.push(markdownEl);
+        }
+
+
+        await new Promise(r => setTimeout(r, 0));
         // iterate over all children of el and measure their sizes
         let widths = [];
         let heights = [];
