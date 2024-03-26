@@ -37,16 +37,13 @@ export async function renderMehrmaid(source: string, el: HTMLElement, ctx: Markd
     let matches = source.match(/"([^"]*?)"/g);
 
     if (matches) {
-        // turn the above into a for loop
-        let markdownEls = [];
-        for(let match of matches){
-            console.log(match);
-            console.log("dgsagkljds")
-            match = match.substring(1, match.length - 1);
-            let markdownEl = await renderMarkdown(match, el, ctx, this.app);
-            markdownEls.push(markdownEl);
-        }
 
+        const promises = [];
+        for(let match of matches){
+            match = match.substring(1, match.length - 1);
+            promises.push(renderMarkdown(match, el, ctx, this.app));
+        }
+        const markdownEls = await Promise.all(promises);
 
         await new Promise(r => setTimeout(r, 0));
         // iterate over all children of el and measure their sizes
