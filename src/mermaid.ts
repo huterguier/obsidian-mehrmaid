@@ -8,7 +8,7 @@ async function renderMarkdown(str: string, el: HTMLElement, ctx: MarkdownPostPro
     const markdownRenderChild = new MarkdownRenderChild(el);
     const markdownEl = el.createDiv();
     markdownEl.style.display = "inline-block";
-    markdownEl.style.textAlign = "left";
+    //markdownEl.style.textAlign = "left";
     if (ctx && !(typeof ctx == "string")) {
         ctx.addChild(markdownRenderChild);
     }
@@ -19,7 +19,7 @@ async function renderMarkdown(str: string, el: HTMLElement, ctx: MarkdownPostPro
 
 export async function renderMehrmaid(source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext) {
     
-    var config = {}
+    let config = {}
     // if darkmode is enabled, use dark theme
     if (document.body.classList.contains("theme-dark")) {
         config = THEME_DARK;
@@ -32,7 +32,7 @@ export async function renderMehrmaid(source: string, el: HTMLElement, ctx: Markd
 
     mermaid.initialize(config);
     mermaid.mermaidAPI.setConfig(config);
-    var graph_id = randomBytes(32).toString('hex');
+    let graph_id = randomBytes(32).toString('hex');
     graph_id = graph_id.replace(/\d/g, '');
     let matches = source.match(/"([^"]*?)"/g);
 
@@ -71,10 +71,9 @@ export async function renderMehrmaid(source: string, el: HTMLElement, ctx: Markd
                                     `<div class="${graph_id}${id} cm-sizer" style="width: ${width}px; height: ${height-7}px; display: inline-block;"></div>`);
         }
 
-        
         const { svg } = await mermaid.render(graph_id, source, (el as Element));
-        el.innerHTML += svg;
-        
+        el.insertAdjacentHTML('beforeend', svg);
+
         for(let i = 0; i < markdownEls.length; i++){
             let id = matches[i].replace(/[^a-zA-Z0-9]/g, "") + i;
             let markdownEl = markdownEls[i];
