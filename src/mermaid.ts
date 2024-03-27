@@ -1,4 +1,4 @@
-import { MarkdownRenderChild, MarkdownRenderer, Plugin, MarkdownPostProcessorContext } from 'obsidian';
+import { MarkdownRenderChild, MarkdownRenderer, MarkdownPostProcessorContext } from 'obsidian';
 import mermaid from 'mermaid';
 import { randomBytes } from 'crypto';
 import { THEME_DARK, THEME_LIGHT } from './themes';
@@ -7,8 +7,7 @@ import { THEME_DARK, THEME_LIGHT } from './themes';
 async function renderMarkdown(str: string, el: HTMLElement, ctx: MarkdownPostProcessorContext, app: any) {
     const markdownRenderChild = new MarkdownRenderChild(el);
     const markdownEl = el.createDiv();
-    markdownEl.style.display = "inline-block";
-    //markdownEl.style.textAlign = "left";
+    markdownEl.addClass("mehrmaid-markdown-container");
     if (ctx && !(typeof ctx == "string")) {
         ctx.addChild(markdownRenderChild);
     }
@@ -78,7 +77,6 @@ export async function renderMehrmaid(source: string, el: HTMLElement, ctx: Markd
             let id = matches[i].replace(/[^a-zA-Z0-9]/g, "") + i;
             let markdownEl = markdownEls[i];
             let htmlEl = document.getElementsByClassName(graph_id + id)[0];
-            console.log(markdownEl);
             htmlEl.appendChild(markdownEl);
         }
     }

@@ -1,5 +1,3 @@
-// empty source file
-
 export const THEME_DARK = {
     theme: 'dark',
     'themeVariables': {
