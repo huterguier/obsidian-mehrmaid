@@ -1,20 +1,10 @@
 import { Notice, Plugin } from 'obsidian';
 import { renderMehrmaid } from './mermaid';
 
-interface MehrmaidSettings {
-	mySetting: string;
-}
-
-const DEFAULT_SETTINGS: MehrmaidSettings = {
-	mySetting: 'default'
-}
 
 export default class Mehrmaid extends Plugin {
-	settings: MehrmaidSettings;
 	
 	async onload() {
-		await this.loadSettings();
-
 		this.app.workspace.onLayoutReady(() => {
 			this.registerMarkdownCodeBlockProcessor('mehrmaid', async (source, el, ctx) => {
 				try {
@@ -25,18 +15,6 @@ export default class Mehrmaid extends Plugin {
 				}
 			});
 		});
-	}
-
-	onunload() {
-
-	}
-
-	async loadSettings() {
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
-	}
-
-	async saveSettings() {
-		await this.saveData(this.settings);
 	}
 }
 

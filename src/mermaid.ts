@@ -1,14 +1,13 @@
-import { MarkdownRenderChild, MarkdownRenderer, MarkdownPostProcessorContext } from 'obsidian';
-import mermaid from 'mermaid';
-import { randomBytes } from 'crypto';
+import { App, MarkdownRenderChild, MarkdownRenderer, MarkdownPostProcessorContext, loadMermaid } from 'obsidian';
 import { THEME_DARK, THEME_LIGHT } from './themes';
 
 
-async function renderMarkdown(str: string, el: HTMLElement, ctx: MarkdownPostProcessorContext, app: any) {
+async function renderMarkdown(str: string, el: HTMLElement, ctx: MarkdownPostProcessorContext, app: App) {
     const markdownRenderChild = new MarkdownRenderChild(el);
     const markdownEl = el.createDiv();
     markdownEl.addClass("mehrmaid-markdown-container");
     if (ctx && !(typeof ctx == "string")) {
+        console.log("Adding child to context");
         ctx.addChild(markdownRenderChild);
     }
     await MarkdownRenderer.render(app, str, markdownEl, ctx.sourcePath, markdownRenderChild);
@@ -18,8 +17,9 @@ async function renderMarkdown(str: string, el: HTMLElement, ctx: MarkdownPostPro
 
 export async function renderMehrmaid(source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext) {
     
+    const mermaid = await loadMermaid();
+
     let config = {}
-    // if darkmode is enabled, use dark theme
     if (document.body.classList.contains("theme-dark")) {
         config = THEME_DARK;
         source += "\n" + "classDef primary fill:#8a5cf5";
@@ -29,10 +29,9 @@ export async function renderMehrmaid(source: string, el: HTMLElement, ctx: Markd
         source += "\n" + "classDef primary fill:#a68afa";
     }
 
+
     mermaid.initialize(config);
     mermaid.mermaidAPI.setConfig(config);
-    let graph_id = randomBytes(32).toString('hex');
-    graph_id = graph_id.replace(/\d/g, '');
     let matches = source.match(/"([^"]*?)"/g);
 
     if (matches) {
@@ -44,8 +43,6 @@ export async function renderMehrmaid(source: string, el: HTMLElement, ctx: Markd
         }
         const markdownEls = await Promise.all(promises);
 
-        await new Promise(r => setTimeout(r, 0));
-        // iterate over all children of el and measure their sizes
         let widths = [];
         let heights = [];
         for(let markdownEl of markdownEls){
@@ -67,16 +64,17 @@ export async function renderMehrmaid(source: string, el: HTMLElement, ctx: Markd
 
             let id = match.replace(/[^a-zA-Z0-9]/g, "") + i;
             source = source.replace(match, 
-                                    `<div class="${graph_id}${id} cm-sizer" style="width: ${width}px; height: ${height-7}px; display: inline-block;"></div>`);
+                                    `<div class="${id} cm-sizer" style="width: ${width}px; height: ${height-7}px; display: inline-block;"></div>`);
         }
 
-        const { svg } = await mermaid.render(graph_id, source, (el as Element));
+        const graphId = "mehrmaid" + "-" + ctx.getSectionInfo(el)?.lineStart
+        const { svg } = await mermaid.render(graphId, source);
         el.insertAdjacentHTML('beforeend', svg);
 
         for(let i = 0; i < markdownEls.length; i++){
             let id = matches[i].replace(/[^a-zA-Z0-9]/g, "") + i;
             let markdownEl = markdownEls[i];
-            let htmlEl = document.getElementsByClassName(graph_id + id)[0];
+            let htmlEl = el.getElementsByClassName(id)[0];
             htmlEl.appendChild(markdownEl);
         }
     }
