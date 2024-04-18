@@ -7,7 +7,6 @@ async function renderMarkdown(str: string, el: HTMLElement, ctx: MarkdownPostPro
     const markdownEl = el.createDiv();
     markdownEl.addClass("mehrmaid-markdown-container");
     if (ctx && !(typeof ctx == "string")) {
-        console.log("Adding child to context");
         ctx.addChild(markdownRenderChild);
     }
     await MarkdownRenderer.render(app, str, markdownEl, ctx.sourcePath, markdownRenderChild);
