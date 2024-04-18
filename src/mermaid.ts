@@ -67,7 +67,7 @@ export async function renderMehrmaid(source: string, el: HTMLElement, ctx: Markd
                                     `<div class="${id} cm-sizer" style="width: ${width}px; height: ${height-7}px; display: inline-block;"></div>`);
         }
 
-        const graphId = "mehrmaid" + "-" + ctx.getSectionInfo(el)?.lineStart
+        const graphId = "mehrmaid" + "-" + ctx.getSectionInfo(el)?.lineStart + "-" + Date.now();
         const { svg } = await mermaid.render(graphId, source);
         el.insertAdjacentHTML('beforeend', svg);
 
