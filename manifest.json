@@ -1,7 +1,7 @@
 {
 	"id": "mehrmaid",
 	"name": "Mehrmaid",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"minAppVersion": "0.15.0",
 	"description": "Enables you to put Markdown inside of Mermaid diagrams.",
 	"author": "huterguier",
