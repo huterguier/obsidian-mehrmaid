@@ -4,7 +4,7 @@ Mehrmaid (as in german "mehr" for "more") is an extension of Mermaid-JS codebloc
 It allows rendering of Obsidian generated markdown inside of node labels.
 This includes features like *Links*, *Tags*, *Codeblocks* and most importantly *Mathjax-Expressions*!
 
-# Example
+## Example
 
 In order to render Obsidian markdown inside of mehrmaid nodes, the node content has to be wrapped in single quotes.
 The following example shows how to render a graph with different node types.
@@ -64,14 +64,13 @@ J(("$J$"))
 
 ![](./assets/example2.png)
 
+## Installation
 
-# Installation
-
-The plugin is not yet available in the official Obsidian plugin store.
-You can install it by cloning this repository into your `.obsidian/plugins` folder and then running `npm install` followed by `npm run build` inside the cloned repository.
+The plugin is available in the official [Obsidian plugin store](https://obsidian.md/plugins?search=mehrmaid).
+Alternatively you can install it by cloning this repository into your `.obsidian/plugins` folder and then running `npm install` followed by `npm run build` inside the cloned repository.
 The plugin should then be available in the Obsidian plugin settings.
 
-# How it works
+## How it works
 
 Mehrmaid makes use of the [Mermaid-JS](https://mermaid-js.github.io/mermaid/#/) library to render graphs.
 Mermaid-JS allows to define nodes and edges in a graph using a simple markdown syntax.
