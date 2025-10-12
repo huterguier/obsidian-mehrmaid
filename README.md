@@ -66,7 +66,7 @@ The corresponding markdown code can be found in [`examples/pg.md`](./examples/pg
 # Installation
 
 The plugin is available in Obsidian's community plugin store.
-You can search for it in the app or access it [here](obsidian://show-plugin?id=mehrmaid).
+You can search for it in the app or access it [here](https://obsidian.md/plugins?id=mehrmaid).
 Alternatively, you can build and install it manually.
 You can build it by cloning this repository into your `.obsidian/plugins` folder and then running `npm install` followed by `npm run build` inside the cloned repository.
 The plugin should then be available in the Obsidian plugin settings.
