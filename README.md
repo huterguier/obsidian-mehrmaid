@@ -11,8 +11,11 @@ Mehrmaid follows the same syntax as Mermaid, but the content of nodes can be ren
 Below is a simple example of a mehrmaid graph.
 It shows how to render images, LaTeX math, tables, links and internal Obsidian links inside of nodes.
 
-![](./examples/main_dark.png#gh-dark-mode-only)
-![](./examples/main_light.png#gh-light-mode-only)
+<div align="center">
+  <img src="./examples/main_dark.png#gh-dark-mode-only" alt="Main Screen (Dark Mode)" width="700" />
+  <img src="./examples/main_light.png#gh-light-mode-only" alt="Main Screen (Light Mode)" width="700" />
+</div>
+<br>
 
 ````
 ```mehrmaid
@@ -57,7 +60,10 @@ If you have any other examples worth sharing, please open an issue or a pull req
 Below is a simple example of a Bayesian network, containing the probaility tables as markdown tables.
 The corresponding markdown code can be found in [`examples/tables.md`](./examples/tables.md).
 
-![](./examples/tables_dark.png#gh-dark-mode-only)
+<div align="center">
+  <img src="./examples/tables_dark.png#gh-dark-mode-only" alt="Example Table" width="600" />
+  <img src="./examples/tables_light.png#gh-light-mode-only" alt="Example Table" width="600" />
+</div>
 ![](./examples/tables_light.png#gh-light-mode-only)
 
 
@@ -65,8 +71,11 @@ The corresponding markdown code can be found in [`examples/tables.md`](./example
 Below is a very simple examples showing a small part of the proof of the policy gradient theorem.
 The corresponding markdown code can be found in [`examples/pg.md`](./examples/pg.md).
 
-![](./examples/pg_dark.png#gh-dark-mode-only)
-![](./examples/pg_light.png#gh-light-mode-only)
+<div align="center">
+  <img src="./examples/pg_dark.png#gh-dark-mode-only" alt="Paging Example (Dark Mode)" width="800" />
+
+  <img src="./examples/pg_light.png#gh-light-mode-only" alt="Paging Example (Light Mode)" width="800" />
+</div>
 
 
 # Installation
