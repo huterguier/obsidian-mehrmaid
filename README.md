@@ -11,6 +11,9 @@ Mehrmaid follows the same syntax as Mermaid, but the content of nodes can be ren
 Below is a simple example of a mehrmaid graph.
 It shows how to render images, LaTeX math, tables, links and internal Obsidian links inside of nodes.
 
+![](./examples/main_dark.png#gh-dark-mode-only)
+![](./examples/main_light.png#gh-light-mode-only)
+
 ````
 ```mehrmaid
 graph LR
@@ -26,8 +29,6 @@ T5("[[mehrmaid]]")
 T6("![|80](https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Obsidian_software_logo.svg/1297px-Obsidian_software_logo.svg.png)")
 ```
 ````
-![](./examples/main_dark.png#gh-dark-mode-only)
-![](./examples/main_light.png#gh-light-mode-only)
 
 
 ## How it works
