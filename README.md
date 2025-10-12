@@ -45,13 +45,6 @@ Lastly the placeholder nodes are replaced with the rendered HTML.
 There are still some issues with this approach, which will hopefully be fixed in the future.
 
 
-## Contributing
-
-At the moment Mehrmaid only support the `flowchart` and `graph` types of Mermaid diagrams.
-Due to the fact that most other diagram types do not share the same underlying rendering code, they cannot be supported by default.
-If you are interested in adding support for other diagram types, please open an issue or a pull request.
-
-
 ## Examples
 This section shows some examples of what can be done with Mehrmaid.
 If you have any other examples worth sharing, please open an issue or a pull request.
@@ -84,3 +77,11 @@ You can search for it in the app or access it [here](https://obsidian.md/plugins
 Alternatively, you can build and install it manually.
 You can build it by cloning this repository into your `.obsidian/plugins` folder and then running `npm install` followed by `npm run build` inside the cloned repository.
 The plugin should then be available in the Obsidian plugin settings.
+
+
+## Contributing
+
+At the moment Mehrmaid only support the `flowchart` and `graph` types of Mermaid diagrams.
+Due to the fact that most other diagram types do not share the same underlying rendering code, they cannot be supported by default.
+If you are interested in adding support for other diagram types, please open an issue or a pull request.
+
