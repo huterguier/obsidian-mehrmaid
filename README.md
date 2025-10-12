@@ -21,8 +21,8 @@ T5("[[mehrmaid]]")
 T6("![|80](https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Obsidian_software_logo.svg/1297px-Obsidian_software_logo.svg.png)")
 ```
 ````
-![](./assets/main_dark.svg#gh-dark-mode-only)
-![](./assets/main_light.svg#gh-light-mode-only)
+![](./examples/main_dark.svg#gh-dark-mode-only)
+![](./examples/main_light.svg#gh-light-mode-only)
 
 
 ## How it works
@@ -50,16 +50,17 @@ If you have any other examples worth sharing, please open an issue or a pull req
 ### Bayesian Network
 Below is a simple example of a Bayesian network, containing the probaility tables as markdown tables.
 The corresponding markdown code can be found in [`examples/tables.md`](./examples/tables.md).
-![](./assets/tables_dark.svg#gh-dark-mode-only)
-![](./assets/tables_light.svg#gh-light-mode-only)
+
+![](./examples/tables_dark.svg#gh-dark-mode-only)
+![](./examples/tables_light.svg#gh-light-mode-only)
 
 
 ### Policy Gradient Theorem
 Below is a very simple examples showing a small part of the proof of the policy gradient theorem.
 The corresponding markdown code can be found in [`examples/pg.md`](./examples/pg.md).
 
-![](./assets/pg_dark.svg#gh-dark-mode-only)
-![](./assets/pg_light.svg#gh-light-mode-only)
+![](./examples/pg_dark.svg#gh-dark-mode-only)
+![](./examples/pg_light.svg#gh-light-mode-only)
 
 
 # Installation
