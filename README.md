@@ -64,7 +64,6 @@ The corresponding markdown code can be found in [`examples/tables.md`](./example
   <img src="./examples/tables_dark.png#gh-dark-mode-only" alt="Example Table" width="600" />
   <img src="./examples/tables_light.png#gh-light-mode-only" alt="Example Table" width="600" />
 </div>
-![](./examples/tables_light.png#gh-light-mode-only)
 
 
 ### Policy Gradient Theorem
