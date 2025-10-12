@@ -3,7 +3,7 @@
 
 [![](https://img.shields.io/github/downloads/huterguier/obsidian-mehrmaid/total)]()
 [![License: MIT](https://img.shields.io/badge/license-MIT-1d8a50.svg)](https://opensource.org/licenses/MIT)
-[![](https://img.shields.io/github/manifest-json/v/st3v3nmw/obsidian-spaced-repetition)]()
+[![](https://img.shields.io/github/manifest-json/v/huterguier/obsidian-mehrmaid)]()
 
 Mehrmaid (as in german "mehr" for "more") is an extension of [Mermaid](https://mermaid.js.org/) codeblocks in Obsidian.
 It allows rendering of Obsidian generated markdown inside of node labels.
