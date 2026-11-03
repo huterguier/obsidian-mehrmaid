@@ -11,3 +11,14 @@
 .mehrmaid-markdown-container {
     display: inline-block;
 }
+
+/* Ensure foreignObject and Pele MathJax formulas never get clipped */
+.block-language-mehrmaid foreignObject,
+.block-language-mehrmaid .pele-math,
+.pele-math,
+.pele-math > div,
+.pele-math mjx-container,
+.mermaid-zoom-modal foreignObject,
+.mermaid-zoom-modal .pele-math {
+    overflow: visible !important;
+}
